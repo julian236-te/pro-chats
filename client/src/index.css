@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background-color: #17100c;
+    color: #f7ece1;
+    overflow-x: hidden;
+  }
+}
+
+/* Pro Chats Lighter Warm Coffee / Latte Doodle Background */
+.wa-chat-bg-light {
+  background-color: #faf4ed;
+  background-image: radial-gradient(#dfd0be 1px, transparent 1px), radial-gradient(#dfd0be 1px, #faf4ed 1px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+.wa-chat-bg-dark {
+  background-color: #1f1612;
+  background-image: radial-gradient(#3a2920 1px, transparent 1px), radial-gradient(#3a2920 1px, #1f1612 1px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(194, 120, 71, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(194, 120, 71, 0.5);
+}
+
+/* Message Bubble Tails */
+.bubble-sent-tail {
+  position: relative;
+}
+.bubble-sent-tail::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -6px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid currentColor;
+  border-bottom: 8px solid transparent;
+}
+
+.bubble-received-tail {
+  position: relative;
+}
+.bubble-received-tail::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -6px;
+  width: 0;
+  height: 0;
+  border-right: 8px solid currentColor;
+  border-bottom: 8px solid transparent;
+}
+
+/* Animated pulse for recording voice note */
+@keyframes recording-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-record-pulse {
+  animation: recording-pulse 1.2s infinite ease-in-out;
+}
+
+/* Floating Notification Banner Slide Down */
+@keyframes slide-down-banner {
+  0% { transform: translateY(-120%) scale(0.92); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+.animate-banner-in {
+  animation: slide-down-banner 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
